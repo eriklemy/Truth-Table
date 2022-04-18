@@ -58,7 +58,7 @@ void TruthTable::generateTable(Operation op) {
             if (pair != choseOperations.end())
                 std::cout << "|\t" << boolRep << "\t";
         }
-        std::cout << "|\t" << pair->second(binaryRep) << "\t|\n";
+        std::cout << "|\t\t" << pair->second(binaryRep) << "\t\t\n";
     }
 }
 
@@ -71,16 +71,16 @@ void TruthTable::show_table(Operation op) {
         std::cout << "|\t" << props[i] << "\t"; 
 
     if(op == Operation::NOT)  
-        std::cout << "|\t" << operations[0] << props[0] << "\t|\n";   
+        std::cout << "|\t" << operations[0] << props[0] << "\t\n";   
     else if(props.size() == 2) 
-        std::cout << "|" << props[0] << " " << op << " " << props[1] << "\t|\n";
+        std::cout << "|\t" << props[0] << " " << op << " " << props[1] << "\t\n";
     else {
-        std::cout << "|" << props[0] 
+        std::cout << "|" << std::setw(10) << props[0] 
                   << " " << op 
                   << " " << props[1] 
                   << " " << op 
-                  << " " << props[2] 
-                  << "|\n";  
+                  << " " << props[2] << std::setw(10)
+                  << "\t\t\n";  
     }
     std::cout << line << '\n';    
 

@@ -1,5 +1,5 @@
-#include "TruthTable.h"
-#include "TruthTable.cpp"
+#include "src\TruthTable.h"
+#include "src\TruthTable.cpp"
 
 #include <iostream>
 #include <algorithm>

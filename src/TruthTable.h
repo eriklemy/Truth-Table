@@ -11,7 +11,7 @@
 constexpr int ONE = 1;
 constexpr int TWO = 2;
 constexpr int THREE = 3;
-constexpr int STRING_SIZE = 16;
+constexpr int STRING_SIZE = 20;
 
 enum class Operation {
 	NOT,
