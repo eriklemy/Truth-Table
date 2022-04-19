@@ -1,36 +1,22 @@
+/*
+    PROJETO 1 - RPLM 
+    RESOLUÇÃO DE PROBLEMAS COM LOGICA MATEMATICA
+    TABELA DA VERDADE
+    NOME: Erick Lemmy dos Santos Oliveira
+*/
 #ifndef TRUTH_TABLE_H
 #define TRUTH_TABLE_H
 
 #include <iostream>
 #include <string>
 #include <bitset>
-#include <unordered_map>
 #include <queue>
 #include <functional>
+#include <unordered_map>
 
-constexpr int ONE = 1;
-constexpr int TWO = 2;
-constexpr int THREE = 3;
 constexpr int STRING_SIZE = 20;
 
-enum class Operation {
-	NOT,
-	AND,
-	OR,
-	IMPLIES,
-	IFF
-};
-
-std::ostream &operator<<(std::ostream &stream, Operation op) {
-	switch (op) {
-		case Operation::NOT:      stream << "¬";   break;
-		case Operation::AND:      stream << "∧";   break;
-		case Operation::OR:       stream << "∨";   break;
-		case Operation::IMPLIES:  stream << "➔ "; break;
-		case Operation::IFF:      stream << "⇿ "; break;
-	}
-	return stream;
-}
+enum class Operation { NOT, AND, OR, IMPLIES, IFF };
 
 class TruthTable {
 	public:
@@ -48,4 +34,14 @@ class TruthTable {
 		void generateTableThree(Operation op);
 };
 
+std::ostream &operator<<(std::ostream &stream, Operation op) {
+	switch (op) {
+		case Operation::NOT:      stream << "¬";   break;
+		case Operation::AND:      stream << "∧";   break;
+		case Operation::OR:       stream << "∨";   break;
+		case Operation::IMPLIES:  stream << "➔ "; break;
+		case Operation::IFF:      stream << "⇿ "; break;
+	}
+	return stream;
+}
 #endif // !TRUTH_TABLE_H

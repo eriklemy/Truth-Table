@@ -1,7 +1,16 @@
+/*
+    PROJETO 1 - RPLM 
+    RESOLUÇÃO DE PROBLEMAS COM LOGICA MATEMATICA
+    TABELA DA VERDADE
+    NOME: Erick Lemmy dos Santos Oliveira
+*/
 #include <iostream>
 #include <iomanip>
 
 #include "TruthTable.h"
+#define ONE 1
+#define TWO 2
+#define THREE 3
 
 TruthTable::TruthTable() {
     choseOperations = {         
@@ -58,7 +67,7 @@ void TruthTable::generateTable(Operation op) {
             if (pair != choseOperations.end())
                 std::cout << "|\t" << boolRep << "\t";
         }
-        std::cout << "|\t\t" << pair->second(binaryRep) << "\t\t\n";
+        std::cout << "|\t" << pair->second(binaryRep) << "\t\t\n";
     }
 }
 
