@@ -4,10 +4,10 @@
     TABELA DA VERDADE
     NOME: Erick Lemmy dos Santos Oliveira
 */
+#include "TruthTable.h"
 #include <iostream>
 #include <iomanip>
 
-#include "TruthTable.h"
 #define ONE 1
 #define TWO 2
 #define THREE 3
@@ -31,12 +31,12 @@ TruthTable::TruthTable() {
         {Operation::IMPLIES, [](std::string bin) {
             bool p = bin.at(0) == '1' ? true: false;
             bool q = bin.at(1) == '0' ? false: true;
-            return (!p | q) ? 'V': 'F';             // ~p or q == p -> q
+            return (!p | q) ? 'V': 'F';              // ~p or q == p -> q
         }},
         {Operation::IFF, [](std::string bin) {    
             bool p = bin.at(0) == '1' ? true: false;
             bool q = bin.at(1) == '0' ? false: true;
-            return ((!p | q) & (!q | p)) ? 'V': 'F';// (p -> q) ^ (q -> p) == p <-> q */
+            return ((!p | q) & (!q | p)) ? 'V': 'F'; // (p -> q) ^ (q -> p) == p <-> q 
         }},
     };
 }
@@ -80,7 +80,7 @@ void TruthTable::show_table(Operation op) {
         std::cout << "|\t" << props[i] << "\t"; 
 
     if(op == Operation::NOT)  
-        std::cout << "|\t" << operations[0] << props[0] << "\t\n";   
+        std::cout << "|\t" << Operation::NOT << props[0] << "\t\n";   
     else if(props.size() == 2) 
         std::cout << "|\t" << props[0] << " " << op << " " << props[1] << "\t\n";
     else {

@@ -4,16 +4,13 @@
     TABELA DA VERDADE
     NOME: Erick Lemmy dos Santos Oliveira
 */
-
 #include "src\TruthTable.h"
 #include "src\TruthTable.cpp"
 
 #include <iostream>
 #include <algorithm>
 #include <sstream>
-
 const std::string FIM = "FIM";
-std::unordered_map<int, std::string> KEYS = {{0, "¬"}, {1, "∧"}, {2, "∨"}, {3, "➔"}, {4, "⇿ "}};
 
 static void SHOW_RULES() {
     std::cout << "_________________________________________________________\n"
@@ -44,58 +41,50 @@ int main() {
 
     SHOW_RULES();
     
-    std::getline(std::cin, prop);
-    std::cout << prop << "\n";
-    
+    std::getline(std::cin, prop);    
     std::string tok;
-    std::stringstream stream(prop);
-    std::vector<std::string> vec_res;
-    std::vector<std::string> v = {"!", "~", "N", "^", "&", "E", "V", "|", "O", ">", "-", "I", "<", "=", "D" };
- 
+    std::stringstream stream(prop); 
     while (getline(stream, tok, ' ')) {
-        if(std::find(v.begin(), v.end(), tok) != v.end())   
+        if(std::find(tt.all_operators.begin(), tt.all_operators.end(), tok) != tt.all_operators.end())   
             op.push_back(tok[0]);
         else tt.push_props(tok);
     }
-           
+        
     std::transform(tok.begin(), tok.end(), tok.begin(), ::toupper);
-
-    if (tok == FIM)
-        std::cout << "PROGRAMA FINALIZADO! OBRIGADO!!\n";
-    else {
-        if (tt.size() > 3) tt.pop_props();
-        else if (tt.size() == 1) tt.show_table(Operation::NOT); 
-        else {
-            switch (tolower(op.front())) {
-                case '!':
-                case '~':
-                case 'n':
-                    tt.show_table(Operation::NOT);
-                    break;
-                case '^':
-                case '&':
-                case 'e':
-                    tt.show_table(Operation::AND);
-                    break;
-                case 'v':
-                case '|':
-                case 'o':
-                    tt.show_table(Operation::OR);
-                    break;
-                case '>':
-                case '-':
-                case 'i':
-                    tt.show_table(Operation::IMPLIES);
-                    break;
-                case '<':
-                case '=':
-                case 'd':
-                    tt.show_table(Operation::IFF);
-                    break;
-                default:
-                    std::cerr << "\nOPERAÇÃO INVALIDA!!";
-                    break;
-            }
+    if (tt.size() > 3) tt.pop_props(); 
+    if (tok == FIM || tt.size() == 1) {
+        tt.show_table(Operation::NOT);
+        std::cout << "\n     PROGRAMA FINALIZADO! OBRIGADO!!\n";
+    } else {
+        switch (tolower(op.front())) {
+            case '!':
+            case '~':
+            case 'n':
+                tt.show_table(Operation::NOT);
+                break;
+            case '^':
+            case '&':
+            case 'e':
+                tt.show_table(Operation::AND);
+                break;
+            case 'v':
+            case '|':
+            case 'o':
+                tt.show_table(Operation::OR);
+                break;
+            case '>':
+            case '-':
+            case 'i':
+                tt.show_table(Operation::IMPLIES);
+                break;
+            case '<':
+            case '=':
+            case 'd':
+                tt.show_table(Operation::IFF);
+                break;
+            default:
+                std::cerr << "\nOPERAÇÃO INVALIDA!!";
+                break;
         }
     }
 }

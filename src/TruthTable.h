@@ -15,23 +15,20 @@
 #include <unordered_map>
 
 constexpr int STRING_SIZE = 20;
-
 enum class Operation { NOT, AND, OR, IMPLIES, IFF };
 
 class TruthTable {
 	public:
 		TruthTable();
 		int size(); 
+		void pop_props();
 		void push_props(std::string p);
 		void show_table(Operation op);
-		void pop_props();
+		std::vector<std::string> all_operators = {"!", "~", "N", "^", "&", "E", "V", "|", "O", ">", "-", "I", "<", "=", "D" };
 	private:
 		std::deque<std::string> props;
-		std::unordered_map<int, std::string> operations = {{0, "¬"}, {1, "∧"}, {2, "∨"}, {3, "➔"}, {4, "⇿ "}};
 		std::unordered_map<Operation, std::function<char(std::string)>> choseOperations;
-
 		void generateTable(Operation op);
-		void generateTableThree(Operation op);
 };
 
 std::ostream &operator<<(std::ostream &stream, Operation op) {
