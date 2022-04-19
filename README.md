@@ -1,8 +1,12 @@
 # Truth-Table
-Constrói a tabela da verdade de uma a três proposições passadas como entrada
+Este repositório contém o trabalho prático 1 de programação, desenvolvidos durante o primeiro semestre de 2022:
+- trabalho pratico 1: Tabela da Verdade 
+    - O trabalho foi desenvolvido em C++.
 
-OBS: para Três proposições o programa ainda não funciona corretamente
-- Erick Lemmy dos Santos Oliveira
+Este trabalho tem como objetivo construir um interpretador de proposições compostas
+Ao executar o programa, o usuário deve inserir como entrada uma fórmula com algum conectivo. Como resultado será gerada a tabela da verdade de uma a três proposições passadas como entrada
+
+__OBS: Para Três proposições o programa ainda não funciona corretamente;__
 
 ## Compilação
 - necessario ter um compilador de C++ instalado
@@ -15,11 +19,14 @@ OBS: para Três proposições o programa ainda não funciona corretamente
 
 ## Operações aceitas:
 <pre>
-NEGAÇÃO:               [!],      [~],     [N]   
-CONJUNÇÃO:             [&],      [^],     [E]   
-DISJUNÇÃO:             [|],      [v],     [O]   
-IMPLICAÇÃO:            [>],      [-],     [I]   
-BICONDICIONAL:         [<],      [=],     [D] 
+______________________________________________________
+|________Operações______|__________Operadores________|
+|      NEGAÇÃO:         |   [!]   |    [~]  |   [N]  | 
+|      CONJUNÇÃO:       |   [&]   |    [^]  |   [E]  | 
+|      DISJUNÇÃO:       |   [|]   |    [v]  |   [O]  | 
+|      IMPLICAÇÃO:      |   [>]   |    [-]  |   [I]  | 
+|      BICONDICIONAL:   |   [<]   |    [=]  |   [D]  |
+------------------------------------------------------
 </pre>
 
 ## Exemplo de Funcionamento
@@ -52,8 +59,8 @@ Digite as PROPOSIÇÃO com a/as OPERAÇÕES: mesa
 |=======================================|
 |       mesa    |       ¬mesa
 |=======================================|
-|       F       |       V
-|       V       |       F
+|       F       |           V
+|       V       |           F
 |=======================================|
 </pre>
 3. Entrando com 2 proposições e o operador de Disjunção
@@ -62,10 +69,10 @@ Digite as PROPOSIÇÃO com a/as OPERAÇÕES: Caderno | Corrimão
 |===========================================================|
 |       Caderno |       Corrimo |       Caderno ∨ Corrimo
 |===========================================================|
-|       F       |       F       |       F
-|       F       |       V       |       V
-|       V       |       F       |       V
-|       V       |       V       |       V
+|       F       |       F       |            F
+|       F       |       V       |            V
+|       V       |       F       |            V
+|       V       |       V       |            V
 |===========================================================|
 </pre>
 
@@ -75,13 +82,13 @@ Digite as PROPOSIÇÃO com a/as OPERAÇÕES: Chá - Tea = Hand
 |===============================================================================|
 |       Ch      |       Tea     |       Hand    |       Ch ➔  Tea ➔  Hand
 |===============================================================================|
-|       F       |       F       |       F       |       V
-|       F       |       F       |       V       |       V
-|       F       |       V       |       F       |       V
-|       F       |       V       |       V       |       V
-|       V       |       F       |       F       |       F
-|       V       |       F       |       V       |       F
-|       V       |       V       |       F       |       V
-|       V       |       V       |       V       |       V
+|       F       |       F       |       F       |               V
+|       F       |       F       |       V       |               V
+|       F       |       V       |       F       |               V
+|       F       |       V       |       V       |               V
+|       V       |       F       |       F       |               F
+|       V       |       F       |       V       |               F
+|       V       |       V       |       F       |               V
+|       V       |       V       |       V       |               V
 |===============================================================================|
 </pre>
