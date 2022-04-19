@@ -1,9 +1,7 @@
-/*
-    PROJETO 1 - RPLM 
+/*  PROJETO 1 - RPLM 
     RESOLUÇÃO DE PROBLEMAS COM LOGICA MATEMATICA
     TABELA DA VERDADE
-    NOME: Erick Lemmy dos Santos Oliveira
-*/
+    NOME: Erick Lemmy dos Santos Oliveira */
 #ifndef TRUTH_TABLE_H
 #define TRUTH_TABLE_H
 
@@ -15,6 +13,7 @@
 #include <unordered_map>
 
 constexpr int STRING_SIZE = 20;
+
 enum class Operation { NOT, AND, OR, IMPLIES, IFF };
 
 class TruthTable {
@@ -24,11 +23,13 @@ class TruthTable {
 		void pop_props();
 		void push_props(std::string p);
 		void show_table(Operation op);
+		void show_tableThree(Operation op1, Operation op2);
 		std::vector<std::string> all_operators = {"!", "~", "N", "^", "&", "E", "V", "|", "O", ">", "-", "I", "<", "=", "D" };
 	private:
 		std::deque<std::string> props;
-		std::unordered_map<Operation, std::function<char(std::string)>> choseOperations;
+		std::unordered_map<Operation, std::function<char(std::string, bool, Operation)>> choseOperations;
 		void generateTable(Operation op);
+		void generateTableThree(Operation op, Operation op2);
 };
 
 std::ostream &operator<<(std::ostream &stream, Operation op) {

@@ -76,19 +76,19 @@ Digite as PROPOSIÇÃO com a/as OPERAÇÕES: Caderno | Corrimão
 |===========================================================|
 </pre>
 
-4. Entrando com 3 variaveis e duas operações 
-Digite as PROPOSIÇÃO com a/as OPERAÇÕES: Chá - Tea = Hand
+4. Entrando com 3 variaveis e duas operações (p $\iff$ Tea) $\iff$ Hand
 <pre>
+Digite as PROPOSIÇÃO com a/as OPERAÇÕES: p = Tea = Hand
 |===============================================================================|
-|       Ch      |       Tea     |       Hand    |       Ch ➔  Tea ➔  Hand
+|       p       |     Tea       |     Hand      |         (p ⇿ Tea) ⇿  Hand
 |===============================================================================|
-|       F       |       F       |       F       |               V
-|       F       |       F       |       V       |               V
-|       F       |       V       |       F       |               V
-|       F       |       V       |       V       |               V
-|       V       |       F       |       F       |               F
-|       V       |       F       |       V       |               F
-|       V       |       V       |       F       |               V
-|       V       |       V       |       V       |               V
+|       F       |       F       |       F       |       V       |       F
+|       F       |       F       |       V       |       V       |       V
+|       F       |       V       |       F       |       F       |       V
+|       F       |       V       |       V       |       F       |       F
+|       V       |       F       |       F       |       F       |       V
+|       V       |       F       |       V       |       F       |       F
+|       V       |       V       |       F       |       V       |       F
+|       V       |       V       |       V       |       V       |       V
 |===============================================================================|
 </pre>
