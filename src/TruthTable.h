@@ -28,8 +28,7 @@ class TruthTable {
 	private:
 		std::deque<std::string> props;
 		std::unordered_map<Operation, std::function<char(std::string, bool, Operation)>> choseOperations;
-		void generateTable(Operation op);
-		void generateTableTwo(Operation op);
+		void generateTableOneTwo(Operation op);
 		void generateTableThree(Operation op, Operation op2);
 };
 

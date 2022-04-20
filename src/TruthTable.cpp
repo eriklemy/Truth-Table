@@ -84,22 +84,9 @@ void TruthTable::pop_props() {
     props.pop_back();
 }
 
-void TruthTable::generateTable(Operation op) {    
-    for (int i = 0; i != (1 << ONE); i++) {
-        std::string binaryRep = std::bitset<ONE>(i).to_string(); 
-        auto pair = choseOperations.find(op);
-        for (size_t j = 0; j < binaryRep.length(); j++) {
-            char boolRep = binaryRep.at(j) == '1' ? 'V': 'F'; 
-            if (pair != choseOperations.end())
-                std::cout << "|\t" << boolRep << "\t";
-        }
-        std::cout << "|\t" << pair->second(binaryRep, false, op) << "\t\t\n";
-    }
-}
-
-void TruthTable::generateTableTwo(Operation op) {    
-    for (int i = 0; i != (1 << TWO); i++) {
-        std::string binaryRep = std::bitset<TWO>(i).to_string(); 
+void TruthTable::generateTableOneTwo(Operation op) {    
+    for (int i = 0; i != (1 << props.size()); i++) {
+        std::string binaryRep = (props.size() == 1) ? std::bitset<ONE>(i).to_string() : std::bitset<TWO>(i).to_string(); 
         auto pair = choseOperations.find(op);
         for (size_t j = 0; j < binaryRep.length(); j++) {
             char boolRep = binaryRep.at(j) == '1' ? 'V': 'F'; 
@@ -123,9 +110,7 @@ void TruthTable::show_table(Operation op) {
     else std::cout << "|\t" << props[0] << " " << op << " " << props[1] << "\t\n";
 
     std::cout << line << '\n';    
-    if (props.size() == 2)
-        generateTableTwo(op);
-    else generateTable(op);
+    generateTableOneTwo(op);
     std::cout << line << '\n';    
 }
 
