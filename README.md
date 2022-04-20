@@ -99,5 +99,5 @@ Digite as PROPOSIÇÃO com a/as OPERAÇÕES: Cao | Gato - MMoney
 <img src = "https://github.com/eriklemy/Truth-Table/blob/main/prints/print_Execucao_2variaveis.png?raw=true">
 
 ### 3 PROPOSIÇÕES
-<img src = "https://github.com/eriklemy/Truth-Table/blob/main/prints/print_Execucao_2variaveis.png?raw=true">
+<img src = "https://github.com/eriklemy/Truth-Table/blob/main/prints/print_Execucao_3variaveis.png?raw=true">
 
