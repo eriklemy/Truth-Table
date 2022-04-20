@@ -6,7 +6,8 @@ Este repositório contém o trabalho prático 1 de programação, desenvolvidos 
 Este trabalho tem como objetivo construir um interpretador de proposições compostas
 Ao executar o programa, o usuário deve inserir como entrada uma fórmula com algum conectivo. Como resultado será gerada a tabela da verdade de uma a três proposições passadas como entrada
 
-__OBS: Para Três proposições o programa ainda não funciona corretamente;__
+___OBS: 
+Para Três proposições o programa funciona sob o criterio de (p OPERACAO q) operacao r ou seja executa primeiro oq ta no parenteses e depois faz com o de fora;___
 
 ## Compilação
 - necessario ter um compilador de C++ instalado
@@ -93,5 +94,10 @@ Digite as PROPOSIÇÃO com a/as OPERAÇÕES: Cao | Gato - MMoney
 |===============================================================================|
 </pre>
 
-![Image](https://discord.com/channels/@me/840637212126347264/966134250522955806)
-![Image](prints/print_Execucao3_variaveis.png)
+## PRINTS DE EXECUÇÃO 
+### 2 PROPOSIÇÕES
+<img src = "https://github.com/eriklemy/Truth-Table/blob/main/prints/print_Execucao_2variaveis.png?raw=true">
+
+### 3 PROPOSIÇÕES
+<img src = "https://github.com/eriklemy/Truth-Table/blob/main/prints/print_Execucao_2variaveis.png?raw=true">
+
