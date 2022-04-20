@@ -97,7 +97,7 @@ void TruthTable::generateTableOneTwo(Operation op) {
     }
 }
 
-void TruthTable::show_table(Operation op) {
+void TruthTable::show_tableOneTwo(Operation op) {
     const int total_width = STRING_SIZE * (props.size() + 1);
     const std::string line = "|" + std::string(total_width - 1, '=') + '|';
     

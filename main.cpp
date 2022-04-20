@@ -33,11 +33,11 @@ int main() {
     if (tt.size() > 3) tt.pop_props();
     
     if (tokken == "FIM" || tt.size() == 1) {
-        tt.show_table(Operation::NOT);
+        tt.show_tableOneTwo(Operation::NOT);
         std::cout << "\n     PROGRAMA FINALIZADO! OBRIGADO!!\n";
     } else if (tt.size() == 3) {
         tt.show_tableThree(switchKeys(op.front()), switchKeys(op.back()));
-    } else tt.show_table(switchKeys(op.front()));
+    } else tt.show_tableOneTwo(switchKeys(op.front()));
 };
 
 void SHOW_RULES() {

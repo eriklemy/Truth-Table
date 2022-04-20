@@ -22,7 +22,7 @@ class TruthTable {
 		int size(); 
 		void pop_props();
 		void push_props(std::string p);
-		void show_table(Operation op);
+		void show_tableOneTwo(Operation op);
 		void show_tableThree(Operation op1, Operation op2);
 		std::vector<std::string> all_operators = {"!", "~", "N", "^", "&", "E", "V", "|", "O", ">", "-", "I", "<", "=", "D" };
 	private:
