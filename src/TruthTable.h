@@ -14,7 +14,7 @@
 
 constexpr int STRING_SIZE = 20;
 
-enum class Operation { NOT, AND, OR, IMPLIES, IFF, INVALID};
+enum class Operation { NOT, AND, OR, IMPLIES, IFF};
 
 class TruthTable {
 	public:
@@ -40,7 +40,6 @@ std::ostream &operator<<(std::ostream &stream, Operation op) {
 		case Operation::OR:       stream << "∨";   break;
 		case Operation::IMPLIES:  stream << "➔ "; break;
 		case Operation::IFF:      stream << "⇿ "; break;
-		case Operation::INVALID:  stream << "ERRO"; break;
 	}
 	return stream;
 }

@@ -69,7 +69,7 @@ Operation switchKeys(char op) {
             return Operation::NOT;
         case '^': case '&': case 'E':
             return Operation::AND;
-        case 'v': case '|': case 'O':
+        case 'V': case '|': case 'O':
             return Operation::OR;
         case '>': case '-': case 'I':
             return Operation::IMPLIES;
@@ -77,6 +77,5 @@ Operation switchKeys(char op) {
             return Operation::IFF;
         default:
             std::cerr << "\nOPERAÇÃO INVALIDA!!\n";
-            return Operation::INVALID;
     }
 }
