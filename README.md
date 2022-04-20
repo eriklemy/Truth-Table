@@ -7,7 +7,8 @@ Este trabalho tem como objetivo construir um interpretador de proposições comp
 Ao executar o programa, o usuário deve inserir como entrada uma fórmula com algum conectivo. Como resultado será gerada a tabela da verdade de uma a três proposições passadas como entrada
 
 ___OBS: 
-Para Três proposições o programa funciona sob o criterio de (p OPERACAO q) operacao r ou seja executa primeiro oq ta no parenteses e depois faz com o de fora;___
+Para Três proposições funciona sob o criterio de (p OPERAÇÃO q) OPERAÇÃO r 
+Portando executa primeiro oq ta no parenteses e depois faz com o de fora;___
 
 ## Compilação
 - necessario ter um compilador de C++ instalado
@@ -17,6 +18,7 @@ Para Três proposições o programa funciona sob o criterio de (p OPERACAO q) op
     g++ .\main.cpp -o .\main.exe && .\main.exe
 </pre>
 - Uma alternativa mais simples é utilizar o VSCode/CodeBlocks ou qualquer outra IDE com C++ configurado. 
+- Obs: Nerd Fonts talvez necessario para apresentação de caracteres.
 
 ## Operações aceitas:
 <pre>
@@ -24,7 +26,7 @@ ______________________________________________________
 |________Operações______|__________Operadores________|
 |      NEGAÇÃO:         |   [!]   |    [~]  |   [N]  | 
 |      CONJUNÇÃO:       |   [&]   |    [^]  |   [E]  | 
-|      DISJUNÇÃO:       |   [|]   |    [v]  |   [O]  | 
+|      DISJUNÇÃO:       |   [|]   |    [V]  |   [O]  | 
 |      IMPLICAÇÃO:      |   [>]   |    [-]  |   [I]  | 
 |      BICONDICIONAL:   |   [<]   |    [=]  |   [D]  |
 ------------------------------------------------------
@@ -95,6 +97,8 @@ Digite as PROPOSIÇÃO com a/as OPERAÇÕES: Cao | Gato - MMoney
 </pre>
 
 ## PRINTS DE EXECUÇÃO 
+A seguir dois prints do programa compilado e executado com 2 e 3 proposições respectivamente:
+
 ### 2 PROPOSIÇÕES
 <img src = "https://github.com/eriklemy/Truth-Table/blob/main/prints/print_Execucao_2variaveis.png?raw=true">
 
