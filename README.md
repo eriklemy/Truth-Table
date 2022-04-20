@@ -93,3 +93,5 @@ Digite as PROPOSIÇÃO com a/as OPERAÇÕES: Cao | Gato - MMoney
 |===============================================================================|
 </pre>
 
+![Screenshot](print_Execucao2_variaveis.png)
+![Screenshot](print_Execucao3_variaveis.png)
