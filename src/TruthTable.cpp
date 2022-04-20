@@ -12,7 +12,7 @@
 #define TWO 2
 #define THREE 3
 
-bool _OperationTwo(bool P, bool Q, Operation op) {
+bool _OperationHelper(bool P, bool Q, Operation op) {
     switch(op) {
         case Operation::AND:
             return P & Q;
@@ -23,7 +23,7 @@ bool _OperationTwo(bool P, bool Q, Operation op) {
         case Operation::IFF:
             return P == Q;
         default:
-            return !P;
+            return !Q;
     } 
 }
 
@@ -38,7 +38,7 @@ TruthTable::TruthTable() {
             bool q = bin.at(1) == '0' ? false: true;
             if (isThreeProps) {
                 bool r = bin.at(2) == '1' ? true: false;
-                return _OperationTwo((p & q), r, op) ? 'V': 'F';
+                return _OperationHelper((p & q), r, op) ? 'V': 'F';
             }
             return (p & q) ? 'V': 'F';
         }},
@@ -47,7 +47,7 @@ TruthTable::TruthTable() {
             bool q = bin.at(1) == '0' ? false: true;
             if (isThreeProps) {
                 bool r = bin.at(2) == '1' ? true: false;
-                return _OperationTwo((p | q), r, op) ? 'V': 'F';
+                return _OperationHelper((p | q), r, op) ? 'V': 'F';
             }
             return (p | q) ? 'V': 'F';
         }},
@@ -56,7 +56,7 @@ TruthTable::TruthTable() {
             bool q = bin.at(1) == '0' ? false: true;
             if (isThreeProps) {
                 bool r = bin.at(2) == '1' ? true: false;
-                return _OperationTwo((!p | q), r, op) ? 'V': 'F';
+                return _OperationHelper((!p | q), r, op) ? 'V': 'F';
             }
             return (!p | q) ? 'V': 'F';              // ~p or q == p -> q
         }},
@@ -65,7 +65,7 @@ TruthTable::TruthTable() {
             bool q = bin.at(1) == '0' ? false: true;
             if (isThreeProps) {
                 bool r = bin.at(2) == '0' ? false: true;
-                return _OperationTwo((!p | q) & (!q | p), r, op) ? 'V': 'F';
+                return _OperationHelper((!p | q) & (!q | p), r, op) ? 'V': 'F';
             }
             return ((!p | q) & (!q | p)) ? 'V': 'F'; // (p -> q) ^ (q -> p) == p <-> q 
         }},
