@@ -10,7 +10,7 @@
 #include <sstream>
 
 void SHOW_RULES();
-Operation switchFaster(char op);
+Operation switchKeys(char op);
 
 int main() {
     TruthTable tt;
@@ -36,9 +36,9 @@ int main() {
         tt.show_table(Operation::NOT);
         std::cout << "\n     PROGRAMA FINALIZADO! OBRIGADO!!\n";
     } else if (tt.size() == 3) {
-        tt.show_tableThree(switchFaster(op.front()), switchFaster(op.back()));
-    } else tt.show_table(switchFaster(op.front()));
-}
+        tt.show_tableThree(switchKeys(op.front()), switchKeys(op.back()));
+    } else tt.show_table(switchKeys(op.front()));
+};
 
 void SHOW_RULES() {
     std::cout << "_________________________________________________________\n"
@@ -63,7 +63,7 @@ void SHOW_RULES() {
               << "Digite as PROPOSIÇÃO com a/as OPERAÇÕES: ";
 }
 
-Operation switchFaster(char op) {
+Operation switchKeys(char op) {
     switch (op) {
         case '!': case '~': case 'N':
             return Operation::NOT;
@@ -77,6 +77,6 @@ Operation switchFaster(char op) {
             return Operation::IFF;
         default:
             std::cerr << "\nOPERAÇÃO INVALIDA!!\n";
-            break;
+            return Operation::INVALID;
     }
 }

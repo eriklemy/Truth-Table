@@ -12,7 +12,7 @@
 #define TWO 2
 #define THREE 3
 
-bool _HelperOperation(bool P, bool Q, Operation op) {
+bool _OperationTwo(bool P, bool Q, Operation op) {
     switch(op) {
         case Operation::AND:
             return P & Q;
@@ -22,6 +22,8 @@ bool _HelperOperation(bool P, bool Q, Operation op) {
             return (!P | Q);
         case Operation::IFF:
             return P == Q;
+        default:
+            return !P;
     } 
 }
 
@@ -34,33 +36,37 @@ TruthTable::TruthTable() {
         {Operation::AND, [](std::string bin, bool isThreeProps, Operation op) {
             bool p = bin.at(0) == '1' ? true: false;
             bool q = bin.at(1) == '0' ? false: true;
-            bool r = bin.at(2) == '1' ? true: false;
-            if (isThreeProps) 
-                return _HelperOperation((p & q), r, op) ? 'V': 'F';
+            if (isThreeProps) {
+                bool r = bin.at(2) == '1' ? true: false;
+                return _OperationTwo((p & q), r, op) ? 'V': 'F';
+            }
             return (p & q) ? 'V': 'F';
         }},
         {Operation::OR, [](std::string bin, bool isThreeProps, Operation op) {
             bool p = bin.at(0) == '1' ? true: false;
             bool q = bin.at(1) == '0' ? false: true;
-            bool r = bin.at(2) == '1' ? true: false;
-            if (isThreeProps) 
-                return _HelperOperation((p | q), r, op) ? 'V': 'F';
+            if (isThreeProps) {
+                bool r = bin.at(2) == '1' ? true: false;
+                return _OperationTwo((p | q), r, op) ? 'V': 'F';
+            }
             return (p | q) ? 'V': 'F';
         }},
         {Operation::IMPLIES, [](std::string bin, bool isThreeProps, Operation op) {
             bool p = bin.at(0) == '1' ? true: false;
             bool q = bin.at(1) == '0' ? false: true;
-            bool r = bin.at(2) == '1' ? true: false;
-            if (isThreeProps) 
-                return _HelperOperation((!p | q), r, op) ? 'V': 'F';
+            if (isThreeProps) {
+                bool r = bin.at(2) == '1' ? true: false;
+                return _OperationTwo((!p | q), r, op) ? 'V': 'F';
+            }
             return (!p | q) ? 'V': 'F';              // ~p or q == p -> q
         }},
         {Operation::IFF, [](std::string bin, bool isThreeProps, Operation op) {    
             bool p = bin.at(0) == '1' ? true: false;
             bool q = bin.at(1) == '0' ? false: true;
-            bool r = bin.at(2) == '0' ? false: true;
-            if (isThreeProps)
-                return _HelperOperation((!p | q) & (!q | p), r, op) ? 'V': 'F';
+            if (isThreeProps) {
+                bool r = bin.at(2) == '0' ? false: true;
+                return _OperationTwo((!p | q) & (!q | p), r, op) ? 'V': 'F';
+            }
             return ((!p | q) & (!q | p)) ? 'V': 'F'; // (p -> q) ^ (q -> p) == p <-> q 
         }},
     };
@@ -79,9 +85,21 @@ void TruthTable::pop_props() {
 }
 
 void TruthTable::generateTable(Operation op) {    
-     for (size_t i = 0; i != (1 << props.size()); i++) {
-        std::string binaryRep;        
-        binaryRep = (props.size() == 1) ? std::bitset<ONE>(i).to_string() : std::bitset<TWO>(i).to_string();
+    for (int i = 0; i != (1 << ONE); i++) {
+        std::string binaryRep = std::bitset<ONE>(i).to_string(); 
+        auto pair = choseOperations.find(op);
+        for (size_t j = 0; j < binaryRep.length(); j++) {
+            char boolRep = binaryRep.at(j) == '1' ? 'V': 'F'; 
+            if (pair != choseOperations.end())
+                std::cout << "|\t" << boolRep << "\t";
+        }
+        std::cout << "|\t" << pair->second(binaryRep, false, op) << "\t\t\n";
+    }
+}
+
+void TruthTable::generateTableTwo(Operation op) {    
+    for (int i = 0; i != (1 << TWO); i++) {
+        std::string binaryRep = std::bitset<TWO>(i).to_string(); 
         auto pair = choseOperations.find(op);
         for (size_t j = 0; j < binaryRep.length(); j++) {
             char boolRep = binaryRep.at(j) == '1' ? 'V': 'F'; 
@@ -100,17 +118,19 @@ void TruthTable::show_table(Operation op) {
     for (size_t i = 0; i < props.size(); i++)
         std::cout << "|\t" << props[i] << "\t"; 
 
-    if (props.size() == 2) 
-        std::cout << "|\t" << props[0] << " " << op << " " << props[1] << "\t\n";
-    else std::cout << "|\t" << Operation::NOT << props[0] << "\t\n";   
-    std::cout << line << '\n';    
+    if (op == Operation::NOT) 
+        std::cout << "|\t" << Operation::NOT << props[0] << "\t\n";
+    else std::cout << "|\t" << props[0] << " " << op << " " << props[1] << "\t\n";
 
-    generateTable(op);
+    std::cout << line << '\n';    
+    if (props.size() == 2)
+        generateTableTwo(op);
+    else generateTable(op);
     std::cout << line << '\n';    
 }
 
 void TruthTable::generateTableThree(Operation op, Operation op2) {    
-     for (size_t i = 0; i != (1 << props.size()); i++) {
+     for (int i = 0; i != (1 << props.size()); i++) {
         std::string binaryRep = std::bitset<THREE>(i).to_string();
         auto pair = choseOperations.find(op);
         for (size_t j = 0; j < binaryRep.length(); j++) {
@@ -131,12 +151,12 @@ void TruthTable::show_tableThree(Operation op1, Operation op2) {
     for (size_t i = 0; i < props.size(); i++)
         std::cout << "|\t" << props[i] << "\t"; 
 
-    std::cout << "|" << std::setw(10) 
+    std::cout << "|" << std::setw(5) 
                 << "(" << props[0] 
                 << " " << op1 
                 << " " << props[1] 
                 << ") " << op2 
-                << " " << props[2] << std::setw(10)
+                << " " << props[2] << std::setw(5)
                 << "\t\t\n";  
     std::cout << line << '\n';    
     generateTableThree(op1, op2);

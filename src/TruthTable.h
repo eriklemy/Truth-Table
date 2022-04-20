@@ -14,7 +14,7 @@
 
 constexpr int STRING_SIZE = 20;
 
-enum class Operation { NOT, AND, OR, IMPLIES, IFF };
+enum class Operation { NOT, AND, OR, IMPLIES, IFF, INVALID};
 
 class TruthTable {
 	public:
@@ -29,6 +29,7 @@ class TruthTable {
 		std::deque<std::string> props;
 		std::unordered_map<Operation, std::function<char(std::string, bool, Operation)>> choseOperations;
 		void generateTable(Operation op);
+		void generateTableTwo(Operation op);
 		void generateTableThree(Operation op, Operation op2);
 };
 
@@ -39,6 +40,7 @@ std::ostream &operator<<(std::ostream &stream, Operation op) {
 		case Operation::OR:       stream << "∨";   break;
 		case Operation::IMPLIES:  stream << "➔ "; break;
 		case Operation::IFF:      stream << "⇿ "; break;
+		case Operation::INVALID:  stream << "ERRO"; break;
 	}
 	return stream;
 }
