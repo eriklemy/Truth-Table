@@ -1,7 +1,9 @@
 # Truth-Table
 Este repositório contém o trabalho prático 1 de programação, desenvolvidos durante o primeiro semestre de 2022:
-- trabalho pratico 1: Tabela da Verdade 
+- Trabalho pratico 1: Tabela da Verdade 
     - O trabalho foi desenvolvido em C++.
+
+- Trabalho pratico 2: Detetive (github: https://github.com/eriklemy/Detetive)
 
 Este trabalho tem como objetivo construir um interpretador de proposições compostas
 Ao executar o programa, o usuário deve inserir como entrada uma fórmula com algum conectivo. Como resultado será gerada a tabela da verdade de uma a três proposições passadas como entrada
